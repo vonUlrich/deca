@@ -6,10 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -23,10 +22,16 @@ public class Athlete {
     private Long id;
     private String firstName;
     private String lastName;
-    private Integer points;
-    private Integer completedEvents; //TODO natuke mõelda siin
+    private Integer points = 0;
+   /* @ElementCollection
+    private List<String> completedEvents =new ArrayList<String>();*/
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private List<Event> completedEvents =new ArrayList<Event>();
+
     //private Event event;
     private Integer age;
     private String country;
-    //private String ssn;  - isikukood, et ei saaks sama isikut panna
+    @Column(nullable = false)
+    private String ssn; //  - isikukood, et ei saaks sama isikut panna
 }
