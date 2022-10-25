@@ -32,6 +32,7 @@ public class Athlete {
     //private Event event;
     private Integer age;
     private String country;
+    private String image;
     @Column(nullable = false)
     private String ssn; //  - isikukood, et ei saaks sama isikut panna
 }
